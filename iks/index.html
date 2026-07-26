@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IKS Śāstra | Rule Precedence Conflict Detection System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ SIDEBAR / NAV ============ -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="brand" data-nav="home">
+      <span class="brand-mark">卐</span>
+      <span class="brand-text">IKS <em>Śāstra</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link" data-nav="home">Home</a>
+      <a href="#dashboard" class="nav-link" data-nav="dashboard">Dashboard</a>
+      <a href="#add-rule" class="nav-link" data-nav="add-rule">Add Rule</a>
+      <a href="#rule-manager" class="nav-link" data-nav="rule-manager">Rule Manager</a>
+      <a href="#conflict-detection" class="nav-link" data-nav="conflict-detection">Conflict Detection</a>
+      <a href="#precedence" class="nav-link" data-nav="precedence">Śāstra Precedence</a>
+      <a href="#explain" class="nav-link" data-nav="explain">Explain Result</a>
+      <a href="#reports" class="nav-link" data-nav="reports">Reports</a>
+      <a href="#about" class="nav-link" data-nav="about">About</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ============ HOME / HERO ============ -->
+  <section class="view active" id="home" data-view="home">
+    <div class="hero">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">A Rule-Based Reasoning Engine Rooted in Indian Knowledge Systems</span>
+        <h1>Resolve Rule Conflicts using Ancient <span class="accent-text">Śāstra Rule Precedence</span></h1>
+        <p class="hero-sub">An intelligent IKS-inspired rule conflict detection system that analyzes overlapping rules, applies Śāstra precedence principles, and provides transparent explanations for every decision.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-nav="conflict-detection">Start Analysis</button>
+          <button class="btn btn-ghost" data-nav="add-rule">Add New Rule</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="heroRuleCount">0</strong><span>Rules Registered</span></div>
+          <div><strong id="heroConflictCount">0</strong><span>Conflicts Traced</span></div>
+          <div><strong>5</strong><span>Precedence Tiers</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art reveal" aria-hidden="true">
+        <svg viewBox="0 0 520 460" class="engine-svg">
+          <defs>
+            <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="100%" stop-color="#E7EEFC"/>
+            </linearGradient>
+          </defs>
+
+          <!-- floating rule cards -->
+          <g class="float-slow">
+            <rect x="20" y="30" width="150" height="58" rx="14" fill="url(#cardGrad)" stroke="#F2E3D5" stroke-width="2"/>
+            <circle cx="42" cy="59" r="6" fill="#2563EB"/>
+            <rect x="58" y="46" width="90" height="8" rx="4" fill="#C7D2E6"/>
+            <rect x="58" y="62" width="60" height="6" rx="3" fill="#F2E3D5"/>
+          </g>
+          <g class="float-med">
+            <rect x="20" y="110" width="150" height="58" rx="14" fill="url(#cardGrad)" stroke="#F2E3D5" stroke-width="2"/>
+            <circle cx="42" cy="139" r="6" fill="#1D4ED8"/>
+            <rect x="58" y="126" width="90" height="8" rx="4" fill="#C7D2E6"/>
+            <rect x="58" y="142" width="70" height="6" rx="3" fill="#F2E3D5"/>
+          </g>
+          <g class="float-fast">
+            <rect x="20" y="190" width="150" height="58" rx="14" fill="url(#cardGrad)" stroke="#F2E3D5" stroke-width="2"/>
+            <circle cx="42" cy="219" r="6" fill="#3B82F6"/>
+            <rect x="58" y="206" width="90" height="8" rx="4" fill="#C7D2E6"/>
+            <rect x="58" y="222" width="50" height="6" rx="3" fill="#F2E3D5"/>
+          </g>
+
+          <!-- flow lines into engine -->
+          <path d="M170 59 C 230 59, 230 210, 280 210" fill="none" stroke="#C7D2E6" stroke-width="2" stroke-dasharray="4 5"/>
+          <path d="M170 139 C 220 139, 220 210, 280 210" fill="none" stroke="#C7D2E6" stroke-width="2" stroke-dasharray="4 5"/>
+          <path d="M170 219 C 220 219, 220 210, 280 210" fill="none" stroke="#C7D2E6" stroke-width="2" stroke-dasharray="4 5"/>
+
+          <!-- decision engine -->
+          <g class="pulse">
+            <polygon points="360,150 420,180 420,240 360,270 300,240 300,180" fill="#E7EEFC" stroke="#2563EB" stroke-width="2.5"/>
+            <text x="360" y="200" text-anchor="middle" font-size="11" fill="#1D4ED8" font-weight="600">ŚĀSTRA</text>
+            <text x="360" y="216" text-anchor="middle" font-size="11" fill="#1D4ED8" font-weight="600">ENGINE</text>
+            <text x="360" y="234" text-anchor="middle" font-size="9" fill="#1D4ED8">Precedence Logic</text>
+          </g>
+
+          <!-- output arrow -->
+          <path d="M420 210 C 450 210, 450 210, 470 210" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+            </marker>
+          </defs>
+
+          <!-- selected rule + explanation -->
+          <g class="glow-soft">
+            <rect x="330" y="310" width="160" height="110" rx="16" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+            <text x="410" y="335" text-anchor="middle" font-size="11" fill="#1D4ED8" letter-spacing="1">SELECTED RULE</text>
+            <rect x="345" y="345" width="130" height="8" rx="4" fill="#2563EB"/>
+            <text x="410" y="372" text-anchor="middle" font-size="9" fill="#2C2C2C">Applies: Exception Precedence</text>
+            <rect x="345" y="382" width="130" height="6" rx="3" fill="#F2E3D5"/>
+            <rect x="345" y="394" width="95" height="6" rx="3" fill="#F2E3D5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="view" id="dashboard" data-view="dashboard">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Dashboard</h2>
+        <p>A live overview of your rule base, detected conflicts, and system activity.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon">📜</div>
+          <div class="stat-value" id="statTotalRules">0</div>
+          <div class="stat-label">Total Rules</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="statActiveRules">0</div>
+          <div class="stat-label">Active Rules</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-value" id="statConflicts">0</div>
+          <div class="stat-label">Conflicts Found</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">🕉️</div>
+          <div class="stat-value" id="statResolved">0</div>
+          <div class="stat-label">Resolved Conflicts</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">📊</div>
+          <div class="stat-value" id="statReports">0</div>
+          <div class="stat-label">Reports Generated</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="panel reveal">
+          <h3>Recent Activities</h3>
+          <ul class="activity-list" id="activityList">
+            <li class="empty-row">No activity recorded yet. Add a rule to begin.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal">
+          <h3>Latest Rule Updates</h3>
+          <ul class="rule-update-list" id="ruleUpdateList">
+            <li class="empty-row">No rules created yet.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal quick-actions">
+          <h3>Quick Actions</h3>
+          <button class="btn btn-primary btn-block" data-nav="add-rule">+ Add Rule</button>
+          <button class="btn btn-outline btn-block" data-nav="conflict-detection">⚡ Detect Conflict</button>
+          <button class="btn btn-outline btn-block" id="quickReportBtn">📄 Generate Report</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADD RULE ============ -->
+  <section class="view" id="add-rule" data-view="add-rule">
+    <div class="section-wrap narrow">
+      <div class="section-head">
+        <h2>Add Rule</h2>
+        <p>Define a new Śāstra rule with its condition, action, and precedence class.</p>
+      </div>
+
+      <form class="card form-card reveal" id="ruleForm" novalidate>
+        <input type="hidden" id="ruleId">
+
+        <div class="form-row">
+          <label for="ruleName">Rule Name</label>
+          <input type="text" id="ruleName" placeholder="e.g. Emergency Override for Ritual Timing">
+        </div>
+
+        <div class="form-row">
+          <label for="ruleDescription">Rule Description</label>
+          <textarea id="ruleDescription" rows="3" placeholder="Explain the intent and scope of this rule..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="ruleCondition">Rule Condition</label>
+          <input type="text" id="ruleCondition" placeholder="e.g. IF eclipse_occurs = true">
+        </div>
+
+        <div class="form-row">
+          <label for="ruleAction">Rule Action</label>
+          <input type="text" id="ruleAction" placeholder="e.g. THEN postpone_ritual = true">
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="rulePriority">Priority</label>
+            <select id="rulePriority">
+              <option value="">Select priority</option>
+              <option value="Emergency">Emergency</option>
+              <option value="Exception">Exception</option>
+              <option value="Specific">Specific</option>
+              <option value="General">General</option>
+              <option value="Default">Default</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="ruleCategory">Category</label>
+            <select id="ruleCategory">
+              <option value="">Select category</option>
+              <option value="Dharma Śāstra">Dharma Śāstra</option>
+              <option value="Jyotiṣa">Jyotiṣa (Astronomy)</option>
+              <option value="Vyākaraṇa">Vyākaraṇa (Grammar)</option>
+              <option value="Āyurveda">Āyurveda</option>
+              <option value="Nyāya">Nyāya (Logic)</option>
+              <option value="Kalpa">Kalpa (Ritual)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="ruleStatus">Status</label>
+            <select id="ruleStatus">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="saveRuleBtn">Save Rule</button>
+          <button type="reset" class="btn btn-ghost" id="resetRuleBtn">Reset</button>
+        </div>
+      </form>
+
+      <div class="panel reveal live-rules-panel">
+        <h3>Recently Saved Rules <span class="muted" id="totalRuleCountLabel"></span></h3>
+        <div id="recentlySavedList" class="rule-update-list">
+          <p class="empty-row">Nothing saved yet in this session — fill the form above and click Save Rule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RULE MANAGER ============ -->
+  <section class="view" id="rule-manager" data-view="rule-manager">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Rule Manager</h2>
+        <p>Search, filter, and manage every rule registered in the system.</p>
+      </div>
+
+      <div class="toolbar card reveal">
+        <input type="search" id="searchRules" placeholder="Search by rule name or condition...">
+        <select id="filterPriority">
+          <option value="">All Priorities</option>
+          <option value="Emergency">Emergency</option>
+          <option value="Exception">Exception</option>
+          <option value="Specific">Specific</option>
+          <option value="General">General</option>
+          <option value="Default">Default</option>
+        </select>
+        <select id="filterCategory">
+          <option value="">All Categories</option>
+          <option value="Dharma Śāstra">Dharma Śāstra</option>
+          <option value="Jyotiṣa">Jyotiṣa</option>
+          <option value="Vyākaraṇa">Vyākaraṇa</option>
+          <option value="Āyurveda">Āyurveda</option>
+          <option value="Nyāya">Nyāya</option>
+          <option value="Kalpa">Kalpa</option>
+        </select>
+      </div>
+
+      <div class="table-card card reveal">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Rule ID</th>
+              <th>Rule Name</th>
+              <th>Condition</th>
+              <th>Action</th>
+              <th>Priority</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Operations</th>
+            </tr>
+          </thead>
+          <tbody id="ruleTableBody">
+            <!-- populated by JS -->
+          </tbody>
+        </table>
+        <p class="empty-row" id="ruleTableEmpty">No rules found. Try adding one from the "Add Rule" section.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONFLICT DETECTION ============ -->
+  <section class="view" id="conflict-detection" data-view="conflict-detection">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Conflict Detection</h2>
+        <p>Enter two rules below to analyze them for overlapping conditions and contradicting actions.</p>
+      </div>
+
+      <div class="card compare-picker reveal">
+        <div class="rule-input-grid">
+
+          <div class="rule-input-card">
+            <div class="rule-input-head">
+              <h4>Rule A</h4>
+              <select id="prefillA" title="Optionally load an existing rule to edit">
+                <option value="">Load from saved rule…</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="ruleAName">Rule Name</label>
+              <input type="text" id="ruleAName" placeholder="e.g. Postpone Ritual During Eclipse">
+            </div>
+            <div class="form-row">
+              <label for="ruleACondition">Condition</label>
+              <input type="text" id="ruleACondition" placeholder="e.g. IF eclipse_occurs = true">
+            </div>
+            <div class="form-row">
+              <label for="ruleAAction">Action</label>
+              <input type="text" id="ruleAAction" placeholder="e.g. THEN postpone_ritual = true">
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="ruleAPriority">Priority</label>
+                <select id="ruleAPriority">
+                  <option value="">Select priority</option>
+                  <option value="Emergency">Emergency</option>
+                  <option value="Exception">Exception</option>
+                  <option value="Specific">Specific</option>
+                  <option value="General">General</option>
+                  <option value="Default">Default</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="ruleACategory">Category <span class="muted">(optional)</span></label>
+                <select id="ruleACategory">
+                  <option value="">Custom</option>
+                  <option value="Dharma Śāstra">Dharma Śāstra</option>
+                  <option value="Jyotiṣa">Jyotiṣa</option>
+                  <option value="Vyākaraṇa">Vyākaraṇa</option>
+                  <option value="Āyurveda">Āyurveda</option>
+                  <option value="Nyāya">Nyāya</option>
+                  <option value="Kalpa">Kalpa</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-divider">VS</div>
+
+          <div class="rule-input-card">
+            <div class="rule-input-head">
+              <h4>Rule B</h4>
+              <select id="prefillB" title="Optionally load an existing rule to edit">
+                <option value="">Load from saved rule…</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="ruleBName">Rule Name</label>
+              <input type="text" id="ruleBName" placeholder="e.g. General Ekādaśī Fasting">
+            </div>
+            <div class="form-row">
+              <label for="ruleBCondition">Condition</label>
+              <input type="text" id="ruleBCondition" placeholder="e.g. IF day = Ekadashi">
+            </div>
+            <div class="form-row">
+              <label for="ruleBAction">Action</label>
+              <input type="text" id="ruleBAction" placeholder="e.g. THEN fasting_required = true">
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="ruleBPriority">Priority</label>
+                <select id="ruleBPriority">
+                  <option value="">Select priority</option>
+                  <option value="Emergency">Emergency</option>
+                  <option value="Exception">Exception</option>
+                  <option value="Specific">Specific</option>
+                  <option value="General">General</option>
+                  <option value="Default">Default</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="ruleBCategory">Category <span class="muted">(optional)</span></label>
+                <select id="ruleBCategory">
+                  <option value="">Custom</option>
+                  <option value="Dharma Śāstra">Dharma Śāstra</option>
+                  <option value="Jyotiṣa">Jyotiṣa</option>
+                  <option value="Vyākaraṇa">Vyākaraṇa</option>
+                  <option value="Āyurveda">Āyurveda</option>
+                  <option value="Nyāya">Nyāya</option>
+                  <option value="Kalpa">Kalpa</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" id="detectConflictBtn">Detect Conflict</button>
+          <button class="btn btn-ghost" id="clearCompareBtn" type="button">Clear Fields</button>
+        </div>
+      </div>
+
+      <div id="conflictResultArea"></div>
+    </div>
+  </section>
+
+  <!-- ============ ŚĀSTRA PRECEDENCE ============ -->
+  <section class="view" id="precedence" data-view="precedence">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Śāstra Rule Precedence</h2>
+        <p>Every conflict is resolved according to a five-tier hierarchy inherited from classical Śāstra interpretive method (Mīmāṃsā Nyāya).</p>
+      </div>
+
+      <div class="hierarchy" id="hierarchyStack">
+        <div class="tier reveal" data-tier="Emergency">
+          <span class="tier-rank">I</span>
+          <div class="tier-body">
+            <h4>Emergency</h4>
+            <p>Ā­patkālika rules — invoked only under crisis or exceptional risk to life, safety, or dharma. Always overrides every other tier.</p>
+          </div>
+        </div>
+        <div class="tier-arrow">↓</div>
+        <div class="tier reveal" data-tier="Exception">
+          <span class="tier-rank">II</span>
+          <div class="tier-body">
+            <h4>Exception</h4>
+            <p>Apavāda rules — carve out a deliberate exception to a general rule (Utsarga). An apavāda always defeats the utsarga it qualifies.</p>
+          </div>
+        </div>
+        <div class="tier-arrow">↓</div>
+        <div class="tier reveal" data-tier="Specific">
+          <span class="tier-rank">III</span>
+          <div class="tier-body">
+            <h4>Specific</h4>
+            <p>Viśeṣa rules — apply to a narrower, more particular context. Under the maxim <em>viśeṣo vidhīyate</em>, the specific rule prevails over the general.</p>
+          </div>
+        </div>
+        <div class="tier-arrow">↓</div>
+        <div class="tier reveal" data-tier="General">
+          <span class="tier-rank">IV</span>
+          <div class="tier-body">
+            <h4>General</h4>
+            <p>Sāmānya rules — broadly applicable rules of wide scope, applied whenever no specific or exception rule intervenes.</p>
+          </div>
+        </div>
+        <div class="tier-arrow">↓</div>
+        <div class="tier reveal" data-tier="Default">
+          <span class="tier-rank">V</span>
+          <div class="tier-body">
+            <h4>Default</h4>
+            <p>Anuvāda / baseline rules — fallback provisions applied only when no higher-tier rule is triggered.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPLAIN RESULT ============ -->
+  <section class="view" id="explain" data-view="explain">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Explain Result</h2>
+        <p>A transparent, step-by-step account of how the system reached its most recent decision.</p>
+      </div>
+      <div id="explainArea">
+        <div class="card explain-empty reveal">
+          <p>No decision has been explained yet. Run a <strong>Conflict Detection</strong> analysis first — its resolution will appear here automatically.</p>
+          <button class="btn btn-primary" data-nav="conflict-detection">Go to Conflict Detection</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPORTS ============ -->
+  <section class="view" id="reports" data-view="reports">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h2>Reports</h2>
+        <p>Summarized analytics across your entire rule base and conflict history.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon">📜</div>
+          <div class="stat-value" id="reportTotalRules">0</div>
+          <div class="stat-label">Total Rules</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-value" id="reportConflicts">0</div>
+          <div class="stat-label">Conflicts</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="reportResolved">0</div>
+          <div class="stat-label">Resolved</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-value" id="reportPending">0</div>
+          <div class="stat-label">Pending</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid two-col">
+        <div class="panel reveal">
+          <h3>Conflict History</h3>
+          <div id="conflictHistoryChart" class="chart-area"></div>
+        </div>
+        <div class="panel reveal">
+          <h3>Rule Distribution by Priority</h3>
+          <div id="ruleDistributionChart" class="chart-area"></div>
+        </div>
+      </div>
+
+      <div class="panel reveal export-panel">
+        <h3>Export Report</h3>
+        <div class="form-actions">
+          <button class="btn btn-outline" id="exportPdfBtn">⬇ Export PDF</button>
+          <button class="btn btn-outline" id="exportCsvBtn">⬇ Export CSV</button>
+          <button class="btn btn-outline" id="printReportBtn">🖨 Print</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" id="about" data-view="about">
+    <div class="section-wrap narrow">
+      <div class="section-head">
+        <h2>About This Project</h2>
+        <p>Bridging classical Indian epistemology with modern rule-based reasoning systems.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Indian Knowledge Systems (IKS)</h3>
+        <p>Indian Knowledge Systems (IKS) refer to the vast body of traditional Indian knowledge spanning philosophy, logic, linguistics, astronomy, medicine, and ritual science, developed and refined over millennia through the Śāstra (treatise) tradition. IKS is not a single discipline but an interconnected ecosystem where rules, commentaries, and interpretive principles govern how texts are read and how conflicting instructions are resolved.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Śāstra Rule Precedence</h3>
+        <p>Classical Mīmāṃsā hermeneutics developed a systematic method for resolving contradictions between scriptural injunctions. When two rules apply to the same situation but demand different actions, precedence is determined by well-defined interpretive maxims — an exception (apavāda) overrides a general rule (utsarga), a specific rule (viśeṣa) overrides a general one (sāmānya), and emergency or crisis provisions (āpatkālika) override all else. This system directly parallels rule-precedence and conflict-resolution strategies used in modern expert systems and business rule engines.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Importance of Rule Conflict Detection</h3>
+        <p>As rule-based systems scale — whether in legal codes, medical protocols, ritual calendars, or software business logic — the number of rules grows and so does the likelihood of silent contradictions. Undetected conflicts lead to unpredictable or incorrect system behavior. A formal conflict detection layer, paired with a transparent precedence mechanism, ensures that every decision the system makes can be traced, justified, and trusted.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Applications</h3>
+        <p>This precedence-based reasoning model is applicable well beyond Śāstric texts: in legal rule engines that reconcile statutes and exceptions, in clinical decision-support systems weighing general protocols against patient-specific exceptions, in compliance and policy engines, and in any expert system where multiple production rules can fire on the same input.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Research Motivation</h3>
+        <p>Most conventional rule engines resolve conflicts using arbitrary tie-breaking such as rule order or recency, offering little interpretability. This project explores whether the centuries-old, well-formalized precedence logic of Śāstra hermeneutics can offer a more principled, explainable alternative — one where every resolution is accompanied by a stated reason drawn from a recognized interpretive maxim.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>Future Scope</h3>
+        <p>Planned extensions include support for weighted multi-rule conflicts, integration with a natural-language rule authoring interface, a persistent backend for multi-user rule bases, and a formal mapping layer connecting each precedence maxim to its original Sanskrit source citation.</p>
+      </div>
+
+      <div class="card about-block reveal">
+        <h3>References</h3>
+        <ul class="ref-list">
+          <li>Jaimini, <em>Mīmāṃsā Sūtra</em> — foundational text on Vedic hermeneutics and interpretive maxims.</li>
+          <li>Kumārila Bhaṭṭa, <em>Tantravārttika</em> — commentary elaborating utsarga–apavāda and viśeṣa–sāmānya principles.</li>
+          <li>Coursework and lecture material on Nyāya-based logical reasoning frameworks.</li>
+          <li>Contemporary literature on rule-based expert systems and conflict-resolution strategies (Rete algorithm, priority-based firing).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>IKS Śāstra</h4>
+      <p>Rule Precedence Conflict Detection System — a final-year B.Sc. Computer Science project rooted in Indian Knowledge Systems.</p>
+    </div>
+    <div>
+      <h4>Project Details</h4>
+      <p>Developer: <span id="footerDeveloper">Aarav Sharma</span></p>
+      <p>College: <span id="footerCollege">Shri Vaishnav Institute of Science</span></p>
+      <p>Department: Computer Science</p>
+      <p>Guide: Dr. Lakshmi Narayanan</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <div class="footer-socials">
+        <a href="#" aria-label="GitHub" title="GitHub">🐙</a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a href="#" aria-label="Email" title="Email">✉</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 IKS Śāstra Rule Precedence Conflict Detection System. Built as an academic research project.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

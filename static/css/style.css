@@ -1,0 +1,1052 @@
+body{
+    margin:0;
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+}
+
+.sidebar{
+    width:240px;
+    height:100vh;
+    position:fixed;
+    background:#1f2937;
+    color:white;
+    padding:20px;
+}
+
+.sidebar h3{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin:5px 0;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+}
+
+.main-content{
+    margin-left:260px;
+    padding:20px;
+}
+
+
+
+/* ==========================================================
+   IKS Śāstra Rule Precedence System
+   Main Stylesheet
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#FFF8F0;
+
+    color:#2C2C2C;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+   COLORS
+=========================== */
+
+:root{
+
+--primary:#E67E22;
+
+--secondary:#F4A261;
+
+--accent:#D97706;
+
+--background:#FFF8F0;
+
+--card:#ffffff;
+
+--border:#F2E3D5;
+
+--text:#2C2C2C;
+
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+header{
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+background:rgba(255,248,240,.95);
+
+backdrop-filter:blur(8px);
+
+border-bottom:1px solid var(--border);
+
+}
+
+.navbar{
+
+width:90%;
+
+margin:auto;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px 0;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+color:var(--accent);
+
+}
+
+.nav-links{
+
+display:flex;
+
+list-style:none;
+
+gap:30px;
+
+}
+
+.nav-links a{
+
+font-size:16px;
+
+font-weight:500;
+
+transition:.3s;
+
+padding:8px 12px;
+
+border-radius:10px;
+
+}
+
+.nav-links a:hover{
+
+background:var(--secondary);
+
+color:white;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+width:90%;
+
+margin:70px auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
+}
+
+.hero-left h1{
+
+font-size:55px;
+
+line-height:1.2;
+
+font-weight:700;
+
+margin:20px 0;
+
+}
+
+.hero-left span{
+
+color:var(--accent);
+
+}
+
+.hero-left p{
+
+font-size:18px;
+
+color:#555;
+
+margin-bottom:35px;
+
+max-width:650px;
+
+}
+
+.tag{
+
+display:inline-block;
+
+background:#FFE7CC;
+
+color:var(--accent);
+
+padding:10px 18px;
+
+border-radius:50px;
+
+font-weight:600;
+
+font-size:14px;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+}
+
+.btn-primary{
+
+background:var(--primary);
+
+color:white;
+
+padding:16px 28px;
+
+border-radius:15px;
+
+font-weight:600;
+
+transition:.3s;
+
+box-shadow:0 8px 20px rgba(230,126,34,.2);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+background:var(--accent);
+
+}
+
+.btn-secondary{
+
+border:2px solid var(--primary);
+
+padding:16px 28px;
+
+border-radius:15px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.btn-secondary:hover{
+
+background:var(--primary);
+
+color:white;
+
+}
+
+/* ===========================
+   HERO DIAGRAM
+=========================== */
+
+.diagram{
+
+background:white;
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.rule-card{
+
+background:#FFF3E6;
+
+padding:16px 30px;
+
+border-radius:14px;
+
+font-weight:600;
+
+border:1px solid var(--border);
+
+}
+
+.engine{
+
+background:#FFF8EE;
+
+padding:18px 35px;
+
+border-radius:14px;
+
+font-weight:600;
+
+border:1px solid var(--border);
+
+}
+
+.engine.orange{
+
+background:var(--primary);
+
+color:white;
+
+}
+
+.winner{
+
+background:#D97706;
+
+color:white;
+
+padding:18px 35px;
+
+border-radius:14px;
+
+font-weight:700;
+
+}
+
+.line{
+
+width:3px;
+
+height:35px;
+
+background:var(--secondary);
+
+border-radius:50px;
+
+}
+
+
+/* ==========================================================
+   FEATURES SECTION
+========================================================== */
+
+.features{
+
+    width:90%;
+
+    margin:100px auto;
+
+    text-align:center;
+
+}
+
+.features h2{
+
+    font-size:42px;
+
+    color:var(--text);
+
+    margin-bottom:15px;
+
+}
+
+.features p{
+
+    color:#666;
+
+    max-width:700px;
+
+    margin:auto;
+
+    margin-bottom:50px;
+
+    font-size:17px;
+
+}
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.feature-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.05);
+
+    cursor:pointer;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 40px rgba(0,0,0,.08);
+
+}
+
+.feature-card h3{
+
+    color:var(--accent);
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.feature-card p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+/* ==========================================================
+   ABOUT SECTION
+========================================================== */
+
+.about{
+
+    width:90%;
+
+    margin:100px auto;
+
+}
+
+.about-card{
+
+    background:white;
+
+    padding:60px;
+
+    border-radius:25px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.05);
+
+}
+
+.about-card h2{
+
+    font-size:40px;
+
+    margin-bottom:25px;
+
+    color:var(--accent);
+
+}
+
+.about-card p{
+
+    font-size:18px;
+
+    line-height:2;
+
+    color:#555;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    margin-top:100px;
+
+    background:white;
+
+    border-top:1px solid var(--border);
+
+}
+
+.footer-container{
+
+    width:90%;
+
+    margin:auto;
+
+    padding:50px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.footer-container h3{
+
+    color:var(--accent);
+
+    margin-bottom:15px;
+
+}
+
+.footer-container p{
+
+    color:#666;
+
+    margin:8px 0;
+
+}
+
+/* ==========================================================
+   SCROLL ANIMATION
+========================================================== */
+
+.hidden{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:all .8s ease;
+
+}
+
+.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ==========================================================
+   HOVER EFFECTS
+========================================================== */
+
+.rule-card,
+.engine,
+.winner{
+
+    transition:.35s;
+
+}
+
+.rule-card:hover{
+
+    transform:scale(1.05);
+
+}
+
+.engine:hover{
+
+    transform:scale(1.05);
+
+}
+
+.winner:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================================================
+   SMOOTH SECTION SPACING
+========================================================== */
+
+section{
+
+    padding-top:30px;
+
+    padding-bottom:30px;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+========================================================== */
+
+@media (max-width:1200px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero-left{
+
+order:1;
+
+}
+
+.hero-right{
+
+order:2;
+
+margin-top:30px;
+
+}
+
+.hero-left p{
+
+margin:auto;
+
+margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:992px){
+
+.navbar{
+
+flex-direction:column;
+
+gap:20px;
+
+padding:18px 0;
+
+}
+
+.nav-links{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+.hero{
+
+margin-top:50px;
+
+}
+
+.hero-left h1{
+
+font-size:42px;
+
+}
+
+.features h2{
+
+font-size:34px;
+
+}
+
+.about-card{
+
+padding:40px;
+
+}
+
+.about-card h2{
+
+font-size:32px;
+
+}
+
+.footer-container{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+
+/* ================= SMALL DEVICES ================= */
+
+@media (max-width:768px){
+
+.hero{
+
+width:95%;
+
+gap:40px;
+
+}
+
+.hero-left h1{
+
+font-size:34px;
+
+}
+
+.hero-left p{
+
+font-size:16px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.btn-primary,
+
+.btn-secondary{
+
+width:240px;
+
+text-align:center;
+
+}
+
+.diagram{
+
+padding:25px;
+
+}
+
+.rule-card,
+
+.engine,
+
+.winner{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.feature-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.features{
+
+width:95%;
+
+}
+
+.about{
+
+width:95%;
+
+}
+
+.footer-container{
+
+width:95%;
+
+}
+
+}
+
+/* ================= EXTRA SMALL ================= */
+
+@media (max-width:480px){
+
+.logo{
+
+font-size:22px;
+
+}
+
+.nav-links{
+
+font-size:14px;
+
+gap:10px;
+
+}
+
+.hero-left h1{
+
+font-size:28px;
+
+}
+
+.tag{
+
+font-size:12px;
+
+padding:8px 15px;
+
+}
+
+.features h2{
+
+font-size:28px;
+
+}
+
+.about-card{
+
+padding:30px;
+
+}
+
+.about-card h2{
+
+font-size:26px;
+
+}
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#FFF8F0;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#E67E22;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#D97706;
+
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+
+::selection{
+
+background:#E67E22;
+
+color:white;
+
+}
+
+/* ==========================================================
+   IMAGE RULE
+========================================================== */
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+/* ==========================================================
+   UTILITY CLASSES
+========================================================== */
+
+.container{
+
+width:90%;
+
+margin:auto;
+
+}
+
+.text-center{
+
+text-align:center;
+
+}
+
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
+.mt-5{margin-top:50px;}
+
+.mb-1{margin-bottom:10px;}
+.mb-2{margin-bottom:20px;}
+.mb-3{margin-bottom:30px;}
+.mb-4{margin-bottom:40px;}
+.mb-5{margin-bottom:50px;}
+
+/* ==========================================================
+   FADE ANIMATION
+========================================================== */
+
+.fade-up{
+
+animation:fadeUp .8s ease forwards;
+
+}
+
+@keyframes fadeUp{
+
+0%{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================================
+   FLOAT ANIMATION
+========================================================== */
+
+.float{
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.active{
+
+background:#E67E22;
+
+color:white !important;
+
+}
